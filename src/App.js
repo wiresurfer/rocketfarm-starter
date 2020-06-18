@@ -70,15 +70,15 @@ class App extends React.Component {
         ur_description: 'http://localhost:3000/ur_description',
       }
     });
-    debugger
-    const output = await robotModel.load();
     // debugger
+    const output = await robotModel.load();
+    debugger
     this.initPlanningScene(robotModel.object)
   }
 
   initPlanningScene(robotModel){
 
-    debugger
+    // debugger
     this.planningSceneViz = new CustomPlanningScene(
       this.ros,
       '/move_group/monitored_planning_scene',
@@ -99,7 +99,7 @@ class App extends React.Component {
     this.ros.connect(this.rosManager.rosBridgeURL );
     this.initViz();
     this.initRobotModel();
-    debugger
+    // debugger
     this.viewer.setContainer(this.container.current);
   }
 
