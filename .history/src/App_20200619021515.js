@@ -68,6 +68,7 @@ class App extends React.Component {
       packages: {
         abb_irb1200_support: 'http://localhost:3000/abb_irb1200_support',
         ur_description: 'http://localhost:3000/ur_description',
+
       }
     });
     debugger
@@ -97,6 +98,7 @@ class App extends React.Component {
     this.initRosConnection();
     this.rosManager.rosBridgeURL = "ws://localhost:9090/";
     this.ros.connect(this.rosManager.rosBridgeURL );
+    
     this.initViz();
     this.initRobotModel();
     debugger

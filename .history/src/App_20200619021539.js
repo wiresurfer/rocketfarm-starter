@@ -97,6 +97,7 @@ class App extends React.Component {
     this.initRosConnection();
     this.rosManager.rosBridgeURL = "ws://localhost:9090/";
     this.ros.connect(this.rosManager.rosBridgeURL );
+    
     this.initViz();
     this.initRobotModel();
     debugger
