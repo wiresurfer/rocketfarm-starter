@@ -62,17 +62,15 @@ class App extends React.Component {
     this.viewer.camera.position.set(-1.5, -1.5, 1.5);
     this.viewer.camera.lookAt(new THREE.Vector3(0, 0, 0));
   }
-  async initRobotModel(urdf){
+  initRobotModel(urdf){
     // this.robotModelViz = new Amphion.RobotModel();
     const robotModel = new Amphion.RobotModel(this.ros, 'robot_description', {
       packages: {
         abb_irb1200_support: 'http://localhost:3000/abb_irb1200_support',
       }
     });
-    debugger
-    const output = await robotModel.load();
-    // debugger
-    this.initPlanningScene(robotModel.object)
+    robotModel.load();
+    this.initPlanningScene(robotModel)
   }
 
   initPlanningScene(robotModel){
@@ -92,13 +90,11 @@ class App extends React.Component {
 
   }
   async componentDidMount(){
-    
     this.initRosConnection();
-    this.rosManager.rosBridgeURL = "ws://localhost:9090/";
-    this.ros.connect(this.rosManager.rosBridgeURL );
-    
     this.initViz();
     this.initRobotModel();
+    this.rosManager.rosBridgeURL = "ws://localhost:9090/";
+    this.ros.connect(this.rosManager.rosBridgeURL );
     debugger
     this.viewer.setContainer(this.container.current);
   }

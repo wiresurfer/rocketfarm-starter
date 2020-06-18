@@ -21,7 +21,6 @@ export const ROS_SOCKET_STATUSES = {
 class App extends React.Component {
   constructor(props) {    
     super(props);
-    this.container = React.createRef();
     this.initRosConnection = this.initRosConnection.bind(this)
     this.initViz = this.initViz.bind(this);
     this.initRobotModel = this.initRobotModel.bind(this);
@@ -61,23 +60,19 @@ class App extends React.Component {
     this.viewer = new Amphion.Viewer3d();
     this.viewer.camera.position.set(-1.5, -1.5, 1.5);
     this.viewer.camera.lookAt(new THREE.Vector3(0, 0, 0));
+    this.container = React.createRef();
   }
-  async initRobotModel(urdf){
-    // this.robotModelViz = new Amphion.RobotModel();
-    const robotModel = new Amphion.RobotModel(this.ros, 'robot_description', {
-      packages: {
-        abb_irb1200_support: 'http://localhost:3000/abb_irb1200_support',
-      }
-    });
+  initRobotModel(urdf){
+    this.robotModelViz = new Amphion.RobotModel();
     debugger
-    const output = await robotModel.load();
-    // debugger
-    this.initPlanningScene(robotModel.object)
+    this.robotModelViz.loadURDF(abb_irb1200, robotModel => {
+      Amphion.RobotModel.onComplete(robotModel);
+      this.robotModel = robotModel;
+      this.initPlanningScene(robotModel)
+    });
   }
 
   initPlanningScene(robotModel){
-
-    debugger
     this.planningSceneViz = new CustomPlanningScene(
       this.ros,
       '/move_group/monitored_planning_scene',
@@ -92,14 +87,11 @@ class App extends React.Component {
 
   }
   async componentDidMount(){
-    
     this.initRosConnection();
-    this.rosManager.rosBridgeURL = "ws://localhost:9090/";
-    this.ros.connect(this.rosManager.rosBridgeURL );
-    
     this.initViz();
-    this.initRobotModel();
-    debugger
+    // this.initRobotModel();
+    this.rosManager.rosBridgeURL = "http://localhost:9090/";
+    this.ros.connect(this.rosManager.rosBridgeURL );
     this.viewer.setContainer(this.container.current);
   }
 
@@ -111,7 +103,7 @@ class App extends React.Component {
     return (
         <Layout>
           <Button> test</Button>
-          <div style={{display:'flex', height: 'calc(100% - 60px)', flexGrow:1}} ref={this.container}></div>
+          <div ref={this.container}></div>
         </Layout>
     );
   }

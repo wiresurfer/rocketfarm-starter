@@ -71,7 +71,7 @@ class App extends React.Component {
     });
     debugger
     const output = await robotModel.load();
-    // debugger
+    debugger
     this.initPlanningScene(robotModel.object)
   }
 

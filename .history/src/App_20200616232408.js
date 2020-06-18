@@ -71,7 +71,7 @@ class App extends React.Component {
     });
     debugger
     const output = await robotModel.load();
-    // debugger
+    debugger
     this.initPlanningScene(robotModel.object)
   }
 
@@ -86,7 +86,7 @@ class App extends React.Component {
         onEnd: console.log,
       },
     );
-    this.planningSceneViz.object.add(robotModel);
+    this.planningSceneViz.object.add(robotModel.object);
     this.viewer.addVisualization(this.planningSceneViz);
     this.planningSceneViz.subscribe();
 

@@ -71,8 +71,8 @@ class App extends React.Component {
     });
     debugger
     const output = await robotModel.load();
-    // debugger
-    this.initPlanningScene(robotModel.object)
+    debugger
+    this.initPlanningScene(robotModel)
   }
 
   initPlanningScene(robotModel){
@@ -86,19 +86,17 @@ class App extends React.Component {
         onEnd: console.log,
       },
     );
-    this.planningSceneViz.object.add(robotModel);
+    this.planningSceneViz.object.add(robotModel.object);
     this.viewer.addVisualization(this.planningSceneViz);
     this.planningSceneViz.subscribe();
 
   }
   async componentDidMount(){
-    
     this.initRosConnection();
-    this.rosManager.rosBridgeURL = "ws://localhost:9090/";
-    this.ros.connect(this.rosManager.rosBridgeURL );
-    
     this.initViz();
     this.initRobotModel();
+    this.rosManager.rosBridgeURL = "ws://localhost:9090/";
+    this.ros.connect(this.rosManager.rosBridgeURL );
     debugger
     this.viewer.setContainer(this.container.current);
   }
