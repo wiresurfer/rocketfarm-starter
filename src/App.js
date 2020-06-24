@@ -8,6 +8,7 @@ import Layout from './containers/_layout'
 import CustomPlanningScene from './components/AmphionObjects/customPlanningScene';
 import CustomDisplayTrajectory from './components/AmphionObjects/customDisplayTrajectory';
 import {abb_irb1200} from './viz/abb';
+import {ur10e} from './viz/ur10e'
 import './App.css';
 
 export const ROS_SOCKET_STATUSES = {
@@ -68,6 +69,7 @@ class App extends React.Component {
       packages: {
         abb_irb1200_support: 'http://localhost:3000/abb_irb1200_support',
         ur_description: 'http://localhost:3000/ur_description',
+        ur_e_description: 'http://localhost:3000/ur_e_description',
       }
     });
     // debugger
