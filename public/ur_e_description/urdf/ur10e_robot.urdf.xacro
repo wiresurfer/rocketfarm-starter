@@ -16,5 +16,5 @@
 
   <link name="world" />
 
-  <xacro:include filename="$(find scene_manager)/urdf/lifting_column.urdf.xacro" />
+  <xacro:include filename="$(find ur_e_description)/urdf/lifting_column.urdf.xacro" />
 </robot>
