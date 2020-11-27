@@ -7,8 +7,8 @@ import { Button } from 'antd';
 import Layout from './containers/_layout'
 import CustomPlanningScene from './components/AmphionObjects/customPlanningScene';
 import CustomDisplayTrajectory from './components/AmphionObjects/customDisplayTrajectory';
-import {abb_irb1200} from './viz/abb';
-import {ur10e} from './viz/ur10e'
+//import {abb_irb1200} from './viz/abb';
+//import {ur10e} from './viz/ur10e'
 import './App.css';
 
 export const ROS_SOCKET_STATUSES = {
@@ -60,15 +60,14 @@ class App extends React.Component {
 
   initViz() {
     this.viewer = new Amphion.Viewer3d();
-    this.viewer.camera.position.set(-1.5, -1.5, 1.5);
-    this.viewer.camera.lookAt(new THREE.Vector3(0, 0, 0));
+    this.viewer.camera.position.set(-2.5, -3.5, 3.5);
+    this.viewer.camera.lookAt(new THREE.Vector3(1, 3, 0));
   }
   async initRobotModel(urdf){
     // this.robotModelViz = new Amphion.RobotModel();
     const robotModel = new Amphion.RobotModel(this.ros, 'robot_description', {
       packages: {
         abb_irb1200_support: 'http://localhost:3000/abb_irb1200_support',
-        ur_description: 'http://localhost:3000/ur_description',
         ur_e_description: 'http://localhost:3000/ur_e_description',
       }
     });
