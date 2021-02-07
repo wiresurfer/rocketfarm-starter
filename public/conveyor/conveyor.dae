@@ -2,8 +2,8 @@
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
   <asset><contributor><author></author><authoring_tool>FBX COLLADA exporter</authoring_tool><comments></comments></contributor><created>2020-06-18T21:01:05Z</created><keywords></keywords><modified>2020-06-18T21:01:05Z</modified><revision></revision><subject></subject><title></title><unit meter="1.000000" name="centimeter"></unit><up_axis>Y_UP</up_axis></asset>
   <library_images>
-    <image id="Conveyor_diffuse.png-image" name="Conveyor_diffuse.png"><init_from>file:///tmp/a81abcd1-6c6d-4ed1-bf4e-17946d79a3cd/53eb7c1ad1b7c024857271bb5eb063a7/Conveyor_diffuse.png</init_from></image>
-    <image id="RubberBelt.png-image" name="RubberBelt.png"><init_from>file:///tmp/a81abcd1-6c6d-4ed1-bf4e-17946d79a3cd/70451ad1ab5e1f2a73290862027b87c7/RubberBelt.png</init_from></image>
+    <image id="Conveyor_diffuse.png-image" name="Conveyor_diffuse.png"><init_from>./Conveyor_diffuse.png</init_from></image>
+    <image id="RubberBelt.png-image" name="RubberBelt.png"><init_from>./RubberBelt.png</init_from></image>
   </library_images>
   <library_materials>
     <material id="Conveyor" name="Conveyor">
